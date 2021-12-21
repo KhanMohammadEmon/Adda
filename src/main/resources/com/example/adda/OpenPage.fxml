@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.adda.OpenPageController">
+   <children>
+      <StackPane prefHeight="494.0" prefWidth="330.0">
+         <children>
+            <Pane fx:id="pnSignUp" prefHeight="494.0" prefWidth="300.0" style="-fx-background-color: #FF4500;" stylesheets="@../../../../../../../../javaProject/University_Projects/Java/Messenger/src/Css/style.css">
+               <children>
+                  <ImageView fx:id="btnBack" fitHeight="38.0" fitWidth="44.0" layoutX="9.0" layoutY="12.0" onMousePressed="#handleMouseEvent" opacity="0.48" pickOnBounds="true" preserveRatio="true" styleClass="btnBack">
+                     <image>
+                        <Image url="@../icons/go_back.png" />
+                     </image>
+                  </ImageView>
+                  <PasswordField fx:id="regPass" layoutX="49.0" layoutY="178.0" prefHeight="35.0" prefWidth="233.0" promptText="Password" styleClass="txtFont" stylesheets="@../../../../../../../../javaProject/University_Projects/Java/Messenger/src/Css/style.css">
+                     <font>
+                        <Font name="Arial" size="17.0" />
+                     </font>
+                  </PasswordField>
+                  <TextField fx:id="regFirstName" layoutX="49.0" layoutY="83.0" prefHeight="35.0" prefWidth="233.0" promptText="Full Name" styleClass="txtFont" stylesheets="@../../../../../../../../javaProject/University_Projects/Java/Messenger/src/Css/style.css">
+                     <font>
+                        <Font name="Arial" size="17.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="regEmail" layoutX="49.0" layoutY="226.0" prefHeight="34.0" prefWidth="233.0" promptText="Email" styleClass="txtFont" stylesheets="@../../../../../../../../javaProject/University_Projects/Java/Messenger/src/Css/style.css">
+                     <font>
+                        <Font name="Arial" size="17.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="118.0" layoutY="33.0" text="Sign Up">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                     <textFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.28631579875946045" green="0.5052631497383118" blue="0.36294737458229065" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.9547017812728882" green="0.9578947424888611" blue="0.9366081953048706" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Label>
+                  <Button layoutX="59.0" layoutY="359.0" mnemonicParsing="false" onAction="#registration" prefHeight="35.0" prefWidth="208.0" style="-fx-background-radius: 90; -fx-background-color: #FFD700;" styleClass="btnLogin" stylesheets="@../../../../../../../../javaProject/University_Projects/Java/Messenger/src/Css/style.css" text="Create Account" textFill="#004c40">
+                     <font>
+                        <Font name="Beirut Regular" size="18.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="56.0" layoutY="412.0" text="Already Have an Account?" textFill="#dad7d7">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="getStarted" layoutX="103.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #FFD700; -fx-background-radius: 90;" styleClass="btnLogin" stylesheets="@../../../../../../../../javaProject/University_Projects/Java/Messenger/src/Css/style.css" text="Log In Here" textFill="#004c40">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="controlRegLabel" layoutX="44.0" layoutY="349.0" opacity="0.0" text="Please, Enter all the necessary Info" textFill="#f44336">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="success" layoutX="75.0" layoutY="426.0" opacity="0.0" text="Registration Successful" textFill="#6abf69">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="goBack" layoutX="77.0" layoutY="452.0" opacity="0.0" text="Please, go back and login!" textFill="#6abf69">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="regName" layoutX="49.0" layoutY="129.0" prefHeight="35.0" prefWidth="233.0" promptText="Username" styleClass="txtFont" stylesheets="@../../../../../../../../javaProject/University_Projects/Java/Messenger/src/Css/style.css">
+                     <font>
+                        <Font name="Arial" size="17.0" />
+                     </font>
+                  </TextField>
+                  <RadioButton fx:id="male" layoutX="128.0" layoutY="320.0" mnemonicParsing="false" selected="true" text="Male" textFill="#ebe8e8">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="Gender" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="female" layoutX="204.0" layoutY="320.0" mnemonicParsing="false" text="Female" textFill="#ebe8e8" toggleGroup="$Gender">
+                     <font>
+                        <Font name="Arial" size="15.0" />
+                     </font>
+                  </RadioButton>
+                  <Label layoutX="53.0" layoutY="319.0" text="Gender:" textFill="#ebeaea">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nameExists" layoutX="73.0" layoutY="349.0" opacity="0.0" text="Username already exists!" textFill="#f44336">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="checkEmail" layoutX="67.0" layoutY="349.0" opacity="0.0" text="E-mail is already registered!" textFill="#f44336">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="regPhoneNo" layoutX="49.0" layoutY="272.0" prefHeight="35.0" prefWidth="233.0" promptText="Phone Number" styleClass="txtFont" stylesheets="@../../../../../../../../javaProject/University_Projects/Java/Messenger/src/Css/style.css">
+                     <font>
+                        <Font name="Arial" size="17.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+            <Pane fx:id="pnSignIn" prefHeight="494.0" prefWidth="330.0" style="-fx-background-color: #FF4500;">
+               <children>
+                  <Label layoutX="134.0" layoutY="93.0" prefHeight="47.0" prefWidth="87.0" text="Log In">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                     <textFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="1.0" green="0.9425926208496094" blue="0.42592594027519226" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Label>
+                  <TextField layoutX="91.0" layoutY="162.0" prefHeight="28.0" prefWidth="173.0" />
+                  <PasswordField layoutX="91.0" layoutY="216.0" prefHeight="28.0" prefWidth="173.0" />
+                  <Button fx:id="logInBtn" layoutX="74.0" layoutY="271.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="38.0" prefWidth="208.0" style="-fx-background-radius: 90; -fx-background-color: #FFD700;" styleClass="btnLogin" stylesheets="@../../../../../../../../javaProject/University_Projects/Java/Messenger/src/Css/style.css" text="Log In" textFill="#004c40">
+                     <font>
+                        <Font name="Beirut Regular" size="18.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="77.0" layoutY="331.0" text="Don't Have an Account?" textFill="#d7d7d7">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnSignUp" layoutX="122.0" layoutY="370.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="28.0" prefWidth="112.0" style="-fx-background-color: #FFD700; -fx-background-radius: 90;" styleClass="btnLogin" stylesheets="@../../../../../../../../javaProject/University_Projects/Java/Messenger/src/Css/style.css" text="Sign Up Here" textFill="#004c40">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="21.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/user.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="21.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/secure.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="116.0" fitWidth="112.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/addaLogo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
