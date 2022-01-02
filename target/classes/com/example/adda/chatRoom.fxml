@@ -18,11 +18,6 @@
          <children>
             <Pane fx:id="chat" prefHeight="200.0" prefWidth="330.0" style="-fx-background-color: #FF4500;">
                <children>
-                  <TextArea fx:id="msgRoom" editable="false" layoutX="-7.0" prefHeight="456.0" prefWidth="337.0" style="-fx-background-color: #4cbb17;" wrapText="true">
-                     <font>
-                        <Font name="Arial" size="16.0" />
-                     </font>
-                  </TextArea>
                   <AnchorPane layoutY="453.0" prefHeight="45.0" prefWidth="330.0" style="-fx-background-color: #FF4500;">
                      <children>
                         <ImageView fitHeight="42.0" fitWidth="73.0" layoutX="286.0" layoutY="2.0" onMouseClicked="#handleSendEvent" pickOnBounds="true" preserveRatio="true">
@@ -37,6 +32,11 @@
                         </TextField>
                      </children>
                   </AnchorPane>
+                  <TextArea fx:id="msgRoom" editable="false" layoutX="-7.0" layoutY="-12.0" prefHeight="456.0" prefWidth="337.0" style="-fx-background-color: #4cbb17;" wrapText="true">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </TextArea>
                </children>
             </Pane>
          </children>

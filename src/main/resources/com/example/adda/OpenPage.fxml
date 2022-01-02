@@ -27,22 +27,22 @@
                         <Image url="@../icons/go_back.png" />
                      </image>
                   </ImageView>
-                  <PasswordField fx:id="regPass" layoutX="49.0" layoutY="178.0" prefHeight="35.0" prefWidth="233.0" promptText="Password" styleClass="txtFont" stylesheets="@../Css/style.css">
+                  <PasswordField fx:id="regPass" layoutX="49.0" layoutY="148.0" prefHeight="35.0" prefWidth="233.0" promptText="Password" styleClass="txtFont" stylesheets="@../Css/style.css">
                      <font>
                         <Font name="Arial" size="17.0" />
                      </font>
                   </PasswordField>
-                  <TextField fx:id="regFirstName" layoutX="49.0" layoutY="83.0" prefHeight="35.0" prefWidth="233.0" promptText="Full Name" styleClass="txtFont" stylesheets="@../Css/style.css">
+                  <TextField fx:id="regFirstName" layoutX="50.0" layoutY="70.0" prefHeight="35.0" prefWidth="233.0" promptText="Full Name" styleClass="txtFont" stylesheets="@../Css/style.css">
                      <font>
                         <Font name="Arial" size="17.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="regEmail" layoutX="49.0" layoutY="226.0" prefHeight="34.0" prefWidth="233.0" promptText="Email" styleClass="txtFont" stylesheets="@../Css/style.css">
+                  <TextField fx:id="regEmail" layoutX="49.0" layoutY="187.0" prefHeight="34.0" prefWidth="233.0" promptText="Email" styleClass="txtFont" stylesheets="@../Css/style.css">
                      <font>
                         <Font name="Arial" size="17.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="118.0" layoutY="33.0" text="Sign Up">
+                  <Label layoutX="108.0" layoutY="17.0" text="Sign Up">
                      <font>
                         <Font name="System Bold" size="28.0" />
                      </font>
@@ -63,42 +63,42 @@
                         </RadialGradient>
                      </textFill>
                   </Label>
-                  <Button layoutX="59.0" layoutY="359.0" mnemonicParsing="false" onAction="#registration" prefHeight="35.0" prefWidth="208.0" style="-fx-background-radius: 90; -fx-background-color: #FFD700;" styleClass="btnLogin" stylesheets="@../Css/style.css" text="Create Account" textFill="#004c40">
+                  <Button layoutX="59.0" layoutY="338.0" mnemonicParsing="false" onAction="#registration" prefHeight="35.0" prefWidth="208.0" style="-fx-background-radius: 90; -fx-background-color: #FFD700;" styleClass="btnLogin" stylesheets="@../Css/style.css" text="Create Account" textFill="#004c40">
                      <font>
                         <Font name="Beirut Regular" size="18.0" />
                      </font>
                   </Button>
-                  <Label layoutX="56.0" layoutY="412.0" text="Already Have an Account?" textFill="#dad7d7">
+                  <Label layoutX="56.0" layoutY="417.0" text="Already Have an Account?" textFill="#dad7d7">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
-                  <Button fx:id="getStarted" layoutX="103.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #FFD700; -fx-background-radius: 90;" styleClass="btnLogin" stylesheets="@../Css/style.css" text="Log In Here" textFill="#004c40">
+                  <Button fx:id="getStarted" layoutX="103.0" layoutY="452.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: #FFD700; -fx-background-radius: 90;" styleClass="btnLogin" stylesheets="@../Css/style.css" text="Log In Here" textFill="#004c40">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Label fx:id="controlRegLabel" layoutX="44.0" layoutY="349.0" opacity="0.0" text="Please, Enter all the necessary Info" textFill="#f44336">
+                  <Label fx:id="controlRegLabel" layoutX="41.0" layoutY="305.0" opacity="0.0" text="Please, Enter all the necessary Info" textFill="#f44336">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="success" layoutX="75.0" layoutY="426.0" opacity="0.0" text="Registration Successful" textFill="#6abf69">
+                  <Label fx:id="success" layoutX="76.0" layoutY="383.0" opacity="0.0" text="Registration Successful" textFill="#6abf69">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="goBack" layoutX="77.0" layoutY="452.0" opacity="0.0" text="Please, go back and login!" textFill="#6abf69">
+                  <Label fx:id="goBack" layoutX="73.0" layoutY="384.0" opacity="0.0" text="Please, go back and login!" textFill="#6abf69">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="regName" layoutX="49.0" layoutY="129.0" prefHeight="35.0" prefWidth="233.0" promptText="Username" styleClass="txtFont" stylesheets="@../Css/style.css">
+                  <TextField fx:id="regName" layoutX="49.0" layoutY="109.0" prefHeight="35.0" prefWidth="233.0" promptText="Username" styleClass="txtFont" stylesheets="@../Css/style.css">
                      <font>
                         <Font name="Arial" size="17.0" />
                      </font>
                   </TextField>
-                  <RadioButton fx:id="male" layoutX="128.0" layoutY="320.0" mnemonicParsing="false" selected="true" text="Male" textFill="#ebe8e8">
+                  <RadioButton fx:id="male" layoutX="128.0" layoutY="274.0" mnemonicParsing="false" selected="true" text="Male" textFill="#ebe8e8">
                      <font>
                         <Font name="Arial" size="15.0" />
                      </font>
@@ -106,88 +106,93 @@
                         <ToggleGroup fx:id="Gender" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="female" layoutX="204.0" layoutY="320.0" mnemonicParsing="false" text="Female" textFill="#ebe8e8" toggleGroup="$Gender">
+                  <RadioButton fx:id="female" layoutX="204.0" layoutY="274.0" mnemonicParsing="false" text="Female" textFill="#ebe8e8" toggleGroup="$Gender">
                      <font>
                         <Font name="Arial" size="15.0" />
                      </font>
                   </RadioButton>
-                  <Label layoutX="53.0" layoutY="319.0" text="Gender:" textFill="#ebeaea">
+                  <Label layoutX="53.0" layoutY="267.0" text="Gender:" textFill="#ebeaea">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nameExists" layoutX="73.0" layoutY="349.0" opacity="0.0" text="Username already exists!" textFill="#f44336">
+                  <Label fx:id="nameExists" layoutX="67.0" layoutY="305.0" opacity="0.0" text="Username already exists!" textFill="#f44336">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="checkEmail" layoutX="67.0" layoutY="349.0" opacity="0.0" text="E-mail is already registered!" textFill="#f44336">
+                  <Label fx:id="checkEmail" layoutX="67.0" layoutY="305.0" opacity="0.0" text="E-mail is already registered!" textFill="#f44336">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="regPhoneNo" layoutX="49.0" layoutY="272.0" prefHeight="35.0" prefWidth="233.0" promptText="Phone Number" styleClass="txtFont" stylesheets="@../Css/style.css">
+                  <TextField fx:id="regPhoneNo" layoutX="49.0" layoutY="225.0" prefHeight="35.0" prefWidth="233.0" promptText="Phone Number" styleClass="txtFont" stylesheets="@../Css/style.css">
                      <font>
                         <Font name="Arial" size="17.0" />
                      </font>
                   </TextField>
-                  <Pane fx:id="pnSignIn" prefHeight="494.0" prefWidth="330.0" style="-fx-background-color: #FF4500;">
-                     <children>
-                        <Label layoutX="134.0" layoutY="93.0" prefHeight="47.0" prefWidth="87.0" text="Log In">
-                           <font>
-                              <Font name="System Bold" size="26.0" />
-                           </font>
-                           <textFill>
-                              <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                                 <stops>
-                                    <Stop>
-                                       <color>
-                                          <Color red="1.0" green="0.9425926208496094" blue="0.42592594027519226" />
-                                       </color>
-                                    </Stop>
-                                    <Stop offset="1.0">
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" />
-                                       </color>
-                                    </Stop>
-                                 </stops>
-                              </RadialGradient>
-                           </textFill>
-                        </Label>
-                        <TextField layoutX="91.0" layoutY="162.0" prefHeight="28.0" prefWidth="173.0" />
-                        <PasswordField layoutX="91.0" layoutY="216.0" prefHeight="28.0" prefWidth="173.0" />
-                        <Button fx:id="logInBtn" layoutX="74.0" layoutY="271.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="38.0" prefWidth="208.0" style="-fx-background-radius: 90; -fx-background-color: #FFD700;" styleClass="btnLogin" stylesheets="@../Css/style.css" text="Log In" textFill="#004c40">
-                           <font>
-                              <Font name="Beirut Regular" size="18.0" />
-                           </font>
-                        </Button>
-                        <Label layoutX="77.0" layoutY="331.0" text="Don't Have an Account?" textFill="#d7d7d7">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="btnSignUp" layoutX="122.0" layoutY="370.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="28.0" prefWidth="112.0" style="-fx-background-color: #FFD700; -fx-background-radius: 90;" styleClass="btnLogin" stylesheets="@../Css/style.css" text="Sign Up Here" textFill="#004c40">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Button>
-                        <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="21.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/user.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="21.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/secure.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="116.0" fitWidth="112.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/addaLogo.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnSignIn" prefHeight="494.0" prefWidth="330.0" style="-fx-background-color: #FF4500;">
+               <children>
+                  <Label layoutX="134.0" layoutY="93.0" prefHeight="47.0" prefWidth="87.0" text="Log In">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                     <textFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="1.0" green="0.9425926208496094" blue="0.42592594027519226" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Label>
+                  <TextField fx:id="userName" layoutX="91.0" layoutY="162.0" prefHeight="28.0" prefWidth="173.0" />
+                  <PasswordField fx:id="passWord" layoutX="91.0" layoutY="216.0" prefHeight="28.0" prefWidth="173.0" />
+                  <Button layoutX="74.0" layoutY="271.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="38.0" prefWidth="208.0" style="-fx-background-radius: 90; -fx-background-color: #FFD700;" styleClass="btnLogin" stylesheets="@../Css/style.css" text="Log In" textFill="#004c40">
+                     <font>
+                        <Font name="Beirut Regular" size="18.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="72.0" layoutY="371.0" text="Don't Have an Account?" textFill="#d7d7d7">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnSignUp" layoutX="115.0" layoutY="415.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="28.0" prefWidth="112.0" style="-fx-background-color: #FFD700; -fx-background-radius: 90;" styleClass="btnLogin" stylesheets="@../Css/style.css" text="Sign Up Here" textFill="#004c40">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="21.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/user.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="21.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/secure.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="116.0" fitWidth="112.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/addaLogo.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="loginNotifier" contentDisplay="CENTER" layoutX="26.0" layoutY="331.0" opacity="0.0" prefHeight="30.0" prefWidth="286.0" text="Username or password is incorrect" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

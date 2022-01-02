@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,8 +29,7 @@ public class OpenPageController {
     public Pane pnSignIn;
     @FXML
     public Button btnSignUp;
-    @FXML
-    public Button logInBtn;
+
 
     @FXML
     public ImageView btnBack;
@@ -71,6 +71,8 @@ public class OpenPageController {
     public static String username, password, gender;
 
     public  static ArrayList<User> users = new ArrayList<User>();
+    public static ArrayList<User> loggedInUser = new ArrayList<>();
+
     //image back btn Handel...
     @FXML
     private void handleMouseEvent(MouseEvent event) {
@@ -78,14 +80,12 @@ public class OpenPageController {
             new FadeTransition().play();
             pnSignIn.toFront();
         }
+        regName.setText("");
+        regPass.setText("");
+        regEmail.setText("");
     }
 
-    @FXML
-    private void registration(ActionEvent event) {
 
-    }
-
-    //sign Up Button Handel...
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -93,22 +93,18 @@ public class OpenPageController {
             new FadeTransition().play();
             pnSignUp.toFront();
         }
-
-    }
-
-//logIn btn Handel....
-    @FXML
-    private void loginAction(ActionEvent event) throws IOException {
-        if (event.getSource() == logInBtn) {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("chatRoom.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 330, 560);
-            Stage stage = new Stage();
-            stage.setTitle("ADDA");
-            stage.setScene(scene);
-            stage.show();
-
+        if (event.getSource().equals(getStarted)) {
+            new FadeTransition().play();
+            pnSignIn.toFront();
         }
+        loginNotifier.setOpacity(0);
+        userName.setText("");
+        passWord.setText("");
+
     }
+
+
+
 
     public  void registration()
     {
@@ -144,13 +140,44 @@ public class OpenPageController {
                     goBack.setOpacity(1);
                     success.setOpacity(1);
                     makeDefault();
+                    if(controlRegLabel.getOpacity() == 1)
+                    {
+                        controlRegLabel.setOpacity(0);
+                    }
+                    if(nameExists.getOpacity() == 1)
+                    {
+                        nameExists.setOpacity(0);
+                    }
+
+                }
+                else
+                {
+                    checkEmail.setOpacity(1);
+                    setOpacity(nameExists, goBack, controlRegLabel, success);
                 }
             }
+            else {
+                nameExists.setOpacity(1);
+                setOpacity(success, goBack, controlRegLabel, checkEmail);
+            }
+
+        }
+        else {
+            controlRegLabel.setOpacity(1);
+            setOpacity(success, goBack, nameExists, checkEmail);
         }
 
     }
 
 
+    private void setOpacity(Label a, Label b, Label c, Label d) {
+        if(a.getOpacity() == 1 || b.getOpacity() == 1 || c.getOpacity() == 1 || d.getOpacity() == 1) {
+            a.setOpacity(0);
+            b.setOpacity(0);
+            c.setOpacity(0);
+            d.setOpacity(0);
+        }
+    }
 
 
     private void setOpacity(Label controlRegLabel, Label checkEmail, Label nameExists) {
@@ -169,15 +196,6 @@ public class OpenPageController {
         setOpacity(controlRegLabel, checkEmail, nameExists); // need learn about setOpacity....
     }
 
-    private boolean checkEmail(String email) {
-        for(User user : users) {
-            if(user.email.equalsIgnoreCase(email)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     private boolean checkUser(String username)
     {
         for (User user: users) {
@@ -188,5 +206,74 @@ public class OpenPageController {
 
         }
         return true;
+    }
+
+
+    private boolean checkEmail(String email) {
+        for(User user : users) {
+            if(user.email.equalsIgnoreCase(email)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+/*
+
+    @FXML
+    private void loginAction(ActionEvent event) throws IOException {
+             if (event.getSource() == logInBtn) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("chatRoom.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 330, 560);
+            Stage stage = new Stage();
+            stage.setTitle("ADDA");
+            stage.setScene(scene);
+            stage.show();
+
+        }
+    }
+*/
+
+
+
+
+
+    public void loginAction() {
+        username = userName.getText();
+        password = passWord.getText();
+        boolean login = false;
+        for (User x : users) {
+            if (x.name.equalsIgnoreCase(username) && x.password.equalsIgnoreCase(password)) {
+                login = true;
+                loggedInUser.add(x);
+                System.out.println(x.name);
+                gender = x.gender;
+                break;
+            }
+        }
+        if (login) {
+            changeWindow();
+        } else {
+            loginNotifier.setOpacity(1);
+        }
+    }
+
+
+
+    public void changeWindow() {
+        try {
+            Stage stage = (Stage) userName.getScene().getWindow();
+            Parent root = FXMLLoader.load(this.getClass().getResource("Room.fxml"));
+            stage.setScene(new Scene(root, 330, 560));
+            stage.setTitle(username + "");
+            stage.setOnCloseRequest(event -> {
+                System.exit(0);
+            });
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

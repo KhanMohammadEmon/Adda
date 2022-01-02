@@ -22,7 +22,7 @@
 }
 
 .txtFont {
-    -fx-text-fill: #f4f4f4;
+    -fx-text-fill: #0f0f0f;
 }
 
 .txtFont:focused {
