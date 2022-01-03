@@ -78,17 +78,17 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Label fx:id="controlRegLabel" layoutX="41.0" layoutY="305.0" opacity="0.0" text="Please, Enter all the necessary Info" textFill="#f44336">
+                  <Label fx:id="controlRegLabel" layoutX="41.0" layoutY="305.0" opacity="0.0" text="Please, Enter all the necessary Info" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="success" layoutX="76.0" layoutY="383.0" opacity="0.0" text="Registration Successful" textFill="#6abf69">
+                  <Label fx:id="success" layoutX="72.0" layoutY="302.0" opacity="0.0" text="Registration Successful" textFill="#078905">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="goBack" layoutX="73.0" layoutY="384.0" opacity="0.0" text="Please, go back and login!" textFill="#6abf69">
+                  <Label fx:id="goBack" layoutX="76.0" layoutY="390.0" opacity="0.0" text="Please, go back and login!" textFill="#078905">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -116,12 +116,12 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nameExists" layoutX="67.0" layoutY="305.0" opacity="0.0" text="Username already exists!" textFill="#f44336">
+                  <Label fx:id="nameExists" layoutX="67.0" layoutY="305.0" opacity="0.0" text="Username already exists!" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="checkEmail" layoutX="67.0" layoutY="305.0" opacity="0.0" text="E-mail is already registered!" textFill="#f44336">
+                  <Label fx:id="checkEmail" layoutX="67.0" layoutY="305.0" opacity="0.0" text="E-mail is already registered!" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>

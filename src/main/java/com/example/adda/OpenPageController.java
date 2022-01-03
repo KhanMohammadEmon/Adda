@@ -264,7 +264,7 @@ public class OpenPageController {
     public void changeWindow() {
         try {
             Stage stage = (Stage) userName.getScene().getWindow();
-            Parent root = FXMLLoader.load(this.getClass().getResource("Room.fxml"));
+            Parent root = FXMLLoader.load(this.getClass().getResource("chatRoom.fxml"));
             stage.setScene(new Scene(root, 330, 560));
             stage.setTitle(username + "");
             stage.setOnCloseRequest(event -> {
