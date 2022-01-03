@@ -12,11 +12,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -193,7 +195,7 @@ public class OpenPageController {
         regFirstName.setText("");
         regPhoneNo.setText("");
         male.setSelected(true);
-        setOpacity(controlRegLabel, checkEmail, nameExists); // need learn about setOpacity....
+        setOpacity(controlRegLabel, checkEmail, nameExists);
     }
 
     private boolean checkUser(String username)
@@ -219,21 +221,6 @@ public class OpenPageController {
     }
 
 
-/*
-
-    @FXML
-    private void loginAction(ActionEvent event) throws IOException {
-             if (event.getSource() == logInBtn) {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("chatRoom.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 330, 560);
-            Stage stage = new Stage();
-            stage.setTitle("ADDA");
-            stage.setScene(scene);
-            stage.show();
-
-        }
-    }
-*/
 
 
 
@@ -266,6 +253,9 @@ public class OpenPageController {
             Stage stage = (Stage) userName.getScene().getWindow();
             Parent root = FXMLLoader.load(this.getClass().getResource("chatRoom.fxml"));
             stage.setScene(new Scene(root, 330, 560));
+            Image image = new Image(new File("src/main/resources/com/example/icons/addaLogo.png").toURI().toString());
+            stage.getIcons().add(image);
+
             stage.setTitle(username + "");
             stage.setOnCloseRequest(event -> {
                 System.exit(0);
