@@ -32,7 +32,7 @@
                         </TextField>
                      </children>
                   </AnchorPane>
-                  <TextArea fx:id="msgRoom" editable="false" layoutX="-7.0" layoutY="-12.0" prefHeight="456.0" prefWidth="337.0" style="-fx-background-color: #4cbb17;" wrapText="true">
+                  <TextArea fx:id="msgRoom" editable="false" layoutX="-7.0" layoutY="2.0" prefHeight="442.0" prefWidth="337.0" style="-fx-background-color: #4cbb17;" wrapText="true">
                      <font>
                         <Font name="Arial" size="16.0" />
                      </font>
