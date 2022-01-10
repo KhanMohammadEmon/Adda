@@ -1,6 +1,5 @@
-# Adda
-We are Work here make a messanger group 
-It is my first group work .....
-All the best for my group members ....
+We are working here to make a messenger group chat(Adda) 
+It is our first group work.
+All the best to my group members...
 
-#######  Thank You #############   
+#Speacily many many Thanks @Niloy Kumar Kundu Viaya  
