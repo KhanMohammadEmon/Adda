@@ -3,22 +3,22 @@
 }
 
 .btnLogin {
-    -fx-background-color: #4f5b62;
+    -fx-background-color:  #FFD700;
 }
 
 .btnLogin:hover {
-    -fx-background-color: #62727b !important;
+    -fx-background-color: #FFD700 !important;
     -fx-text-fill: #4db6ac;
 }
 
 .allButton {
-    -fx-background-color:  #718792;
+    -fx-background-color:   #FFD700;
     -fx-background-radius: 90;
 }
 
 .allButton:hover {
-    -fx-background-color: #819ca9;
-    -fx-text-fill: #000000;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #ffffff;
 }
 
 .txtFont {
@@ -86,7 +86,7 @@
 }
 
 .textField {
-    -fx-text-fill: #eeeeee;
+    -fx-text-fill: #ffffff;
     -fx-font-family: Arial !important;
 }
 

@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class OpenPageController {
@@ -72,7 +73,7 @@ public class OpenPageController {
 
     public static String username, password, gender;
 
-    public  static ArrayList<User> users = new ArrayList<User>();
+    public  static ArrayList<User> users = new ArrayList<>();
     public static ArrayList<User> loggedInUser = new ArrayList<>();
 
     //image back btn Handel...
@@ -251,15 +252,14 @@ public class OpenPageController {
     public void changeWindow() {
         try {
             Stage stage = (Stage) userName.getScene().getWindow();
-            Parent root = FXMLLoader.load(this.getClass().getResource("chatRoom.fxml"));
+            Parent root;
+            root = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("chatRoom.fxml")));
             stage.setScene(new Scene(root, 330, 560));
             Image image = new Image(new File("src/main/resources/com/example/icons/addaLogo.png").toURI().toString());
             stage.getIcons().add(image);
 
             stage.setTitle(username + "");
-            stage.setOnCloseRequest(event -> {
-                System.exit(0);
-            });
+            stage.setOnCloseRequest(event -> System.exit(0));
             stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
