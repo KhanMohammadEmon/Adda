@@ -241,7 +241,10 @@ public class OpenPageController {
             }
         }
         if (login) {
+
             changeWindow();
+            Main m = new Main();
+
         } else {
             loginNotifier.setOpacity(1);
         }

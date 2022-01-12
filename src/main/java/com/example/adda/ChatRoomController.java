@@ -146,7 +146,7 @@ public class ChatRoomController extends Thread implements Initializable {
 
  private void connectSocket() {
   try {
-   socket = new Socket("127.0.0.1", 8889);
+   socket = new Socket("127.0.0.1", 4444);
    System.out.println("Socket is connected with server!");
    reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
    writer = new PrintWriter(socket.getOutputStream(), true);
