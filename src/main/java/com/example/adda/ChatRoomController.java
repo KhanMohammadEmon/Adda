@@ -27,7 +27,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static com.example.adda.OpenPageController.users;
-
 public class ChatRoomController extends Thread implements Initializable {
 
  @FXML
@@ -40,6 +39,10 @@ public class ChatRoomController extends Thread implements Initializable {
  public Label clientName;
  @FXML
  public Button profileBtn;
+ @FXML
+ public Label online;
+ @FXML
+ public Button chatBtn;
  @FXML
  public Circle showProPic;
  @FXML
@@ -146,7 +149,7 @@ public class ChatRoomController extends Thread implements Initializable {
 
  private void connectSocket() {
   try {
-   socket = new Socket("127.0.0.1", 4444);
+   socket = new Socket("127.0.0.1", 2222);
    System.out.println("Socket is connected with server!");
    reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
    writer = new PrintWriter(socket.getOutputStream(), true);
@@ -188,6 +191,35 @@ public class ChatRoomController extends Thread implements Initializable {
   // }
   }
 
+ }
+
+
+ @Override
+ public void run() {
+  try {
+   while (true) {
+    String msg = reader.readLine();
+    String[] tokens = msg.split(" ");
+    String cmd = tokens[0];
+    System.out.println(cmd);
+    StringBuilder fulmsg = new StringBuilder();
+    for(int i = 1; i < tokens.length; i++) {
+     fulmsg.append(tokens[i]);
+    }
+    System.out.println(fulmsg);
+    if (cmd.equalsIgnoreCase(OpenPageController.username + ":")) {
+     continue;
+    } else if(fulmsg.toString().equalsIgnoreCase("bye")) {
+     break;
+    }
+    msgRoom.appendText(msg + "\n");
+   }
+   reader.close();
+   writer.close();
+   socket.close();
+  } catch (Exception e) {
+   e.printStackTrace();
+  }
  }
 }
 

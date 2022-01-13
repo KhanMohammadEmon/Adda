@@ -1,10 +1,8 @@
 package com.example.adda;
 
 import javafx.animation.FadeTransition;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,7 +30,6 @@ public class OpenPageController {
     public Pane pnSignIn;
     @FXML
     public Button btnSignUp;
-
 
     @FXML
     public ImageView btnBack;
@@ -88,8 +85,7 @@ public class OpenPageController {
         regEmail.setText("");
     }
 
-
-
+    // SIgnIn and SignUP button handel....
     @FXML
     private void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnSignUp) {
@@ -107,7 +103,7 @@ public class OpenPageController {
     }
 
 
-
+//registration part...
 
     public  void registration()
     {
@@ -172,7 +168,6 @@ public class OpenPageController {
 
     }
 
-
     private void setOpacity(Label a, Label b, Label c, Label d) {
         if(a.getOpacity() == 1 || b.getOpacity() == 1 || c.getOpacity() == 1 || d.getOpacity() == 1) {
             a.setOpacity(0);
@@ -189,6 +184,7 @@ public class OpenPageController {
         nameExists.setOpacity(0);
     }
 
+
     private void makeDefault() {
         regName.setText("");
         regPass.setText("");
@@ -199,18 +195,19 @@ public class OpenPageController {
         setOpacity(controlRegLabel, checkEmail, nameExists);
     }
 
+    //User-name check
     private boolean checkUser(String username)
     {
         for (User user: users) {
-            if(user.email.equalsIgnoreCase(username))
+            if(user.name.equalsIgnoreCase(username))
             {
                 return false;
             }
-
         }
         return true;
     }
 
+   //Check Email...
 
     private boolean checkEmail(String email) {
         for(User user : users) {
@@ -220,12 +217,6 @@ public class OpenPageController {
         }
         return true;
     }
-
-
-
-
-
-
 
     public void loginAction() {
         username = userName.getText();
@@ -241,16 +232,12 @@ public class OpenPageController {
             }
         }
         if (login) {
-
             changeWindow();
-            Main m = new Main();
 
         } else {
             loginNotifier.setOpacity(1);
         }
     }
-
-
 
     public void changeWindow() {
         try {

@@ -11,17 +11,18 @@ import java.io.IOException;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage mainStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("OpenPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 330, 494);
         Image image = new Image(new File("src/main/resources/com/example/icons/addaLogo.png").toURI().toString());
-        stage.getIcons().add(image);
-        stage.setTitle("ADDA");
-        stage.setScene(scene);
-        stage.show();
+        mainStage.getIcons().add(image);
+        mainStage.setTitle("ADDA");
+        mainStage.setScene(scene);
+        mainStage.setResizable(false);
+        mainStage.show();
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
