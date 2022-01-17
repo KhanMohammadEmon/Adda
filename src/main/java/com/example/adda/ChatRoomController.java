@@ -31,7 +31,7 @@ import java.util.ResourceBundle;
 import static com.example.adda.OpenPageController.*;
 
 
-public class ChatRoomController extends Thread implements Initializable {
+public class ChatRoomController extends Thread implements Initializable{
 
  @FXML
  public TextArea msgRoom;
@@ -71,9 +71,15 @@ public class ChatRoomController extends Thread implements Initializable {
  BufferedReader reader;
  PrintWriter writer = null;
  Socket socket;
+ String userName = OpenPageController.class.getName();
+
 
 
  String Name1,Password1,email1,phone1,gender1;
+
+
+
+
  public void info()
  {
   try {
@@ -124,7 +130,7 @@ public class ChatRoomController extends Thread implements Initializable {
 
  public void send() {
   String msg = msgField.getText();
-  writer.println(OpenPageController.userName  +" : " + msg);
+  writer.println(userName  +" : " + msg);
   msgRoom.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
   msgRoom.appendText("Me: " + msg + "\n");
   msgField.setText("");
@@ -178,6 +184,8 @@ public class ChatRoomController extends Thread implements Initializable {
  @Override
  public void initialize(URL url, ResourceBundle resourceBundle) {
   info();
+  System.out.println("Chat Room Controller user name : "+userName);
+  gender1 = "Male";
   showProPic.setStroke(Color.valueOf("#90a4ae"));
   Image image;
   if (gender1.equalsIgnoreCase("Male")) {
@@ -199,6 +207,9 @@ public class ChatRoomController extends Thread implements Initializable {
    reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
    writer = new PrintWriter(socket.getOutputStream(), true);
    this.start();
+  /* ChatRoomController obj = new ChatRoomController(userNazme+"");
+   Thread thread = new Thread(obj);
+   thread.start();*/
   } catch (IOException e) {
    e.printStackTrace();
   }
@@ -252,7 +263,7 @@ public class ChatRoomController extends Thread implements Initializable {
      fulmsg.append(tokens[i]);
     }
     System.out.println(fulmsg);
-    if (cmd.equalsIgnoreCase(OpenPageController.userName + ":")) {
+    if (cmd.equalsIgnoreCase(userName + ":")) {
      continue;
     } else if(fulmsg.toString().equalsIgnoreCase("bye")) {
      break;

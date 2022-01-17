@@ -2,7 +2,6 @@ package com.example.adda;
 
 
 import com.example.adda.OpenPageController;
-import com.example.adda.User;
 
 import java.io.BufferedReader;
 import java.io.IOException;

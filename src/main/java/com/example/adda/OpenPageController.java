@@ -20,7 +20,6 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -71,8 +70,6 @@ public class OpenPageController {
     public Label nameExists;
     @FXML
     public Label checkEmail;
-
-
 
 
 
@@ -275,14 +272,6 @@ public class OpenPageController {
 
 
 
-    public TextField getUserName() {
-        return userName;
-    }
-
-    public void setUserName(TextField userName) {
-        this.userName = userName;
-    }
-
     public void loginAction(ActionEvent ae) {
         ResultSet rs;
 
@@ -290,10 +279,6 @@ public class OpenPageController {
 
         String uname = userName.getText();
         String pass = passWord.getText();
-
-
-      /*  username = userName.getText();
-        password = passWord.getText();*/
 
         String query = "SELECT * FROM `adda` WHERE `a_userName` =? AND `a_password` =?";
 
@@ -317,29 +302,11 @@ public class OpenPageController {
             Logger.getLogger(OpenPageController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-     /*   boolean login = false;
-        for (User x : users) {
-            if (x.name.equalsIgnoreCase(username) && x.password.equalsIgnoreCase(password)) {
-                login = true;
-                loggedInUser.add(x);
-                System.out.println(x.name);
-                gender = x.gender;
-                break;
-            }
-        }
-        if (login) {
-            changeWindow();
-
-        } else {
-            loginNotifier.setOpacity(1);
-        }*/
     }
-
-
-
 
     public void changeWindow() {
         try {
+            String uname =userName.getText();
             Stage stage = (Stage) userName.getScene().getWindow();
             Parent root;
             root = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("chatRoom.fxml")));
@@ -347,7 +314,7 @@ public class OpenPageController {
             Image image = new Image(new File("src/main/resources/com/example/icons/addaLogo.png").toURI().toString());
             stage.getIcons().add(image);
 
-            stage.setTitle(userName + "");
+            stage.setTitle(uname + "");
             stage.setOnCloseRequest(event -> System.exit(0));
             stage.setResizable(false);
             stage.show();
@@ -356,7 +323,7 @@ public class OpenPageController {
         }
     }
 
-    }
+}
 
 
 
