@@ -24,9 +24,13 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.net.Socket;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import static com.example.adda.OpenPageController.*;
 
-import static com.example.adda.OpenPageController.users;
+
 public class ChatRoomController extends Thread implements Initializable {
 
  @FXML
@@ -69,18 +73,58 @@ public class ChatRoomController extends Thread implements Initializable {
  Socket socket;
 
 
+ String Name1,Password1,email1,phone1,gender1;
+ public void info()
+ {
+  try {
+   PreparedStatement pst;
+   ResultSet rs;
+   String username = userName;
+   String query = "SELECT `a_name`, `a_password`, `a_email`, `a_phn`, `a_gender` FROM `adda` WHERE a_userName =?";
+   pst = MyConnection.getConnection().prepareStatement(query);
+   pst.setString(1, username);
+   rs = pst.executeQuery();
+
+   if(rs.next()==true)
+   {
+    this.Name1 = rs.getString(1);
+    this.Password1 = rs.getString(2);
+    this.email1 = rs.getString(3);
+    this. phone1 = rs.getString(3);
+    this. gender1 = rs.getString(3);
+
+
+
+   }
+   else
+   {
+    System.out.println("delete info plz");
+
+   }
+  }
+  catch (SQLException ex)
+  {
+   ex.printStackTrace();
+  }
+
+
+ }
+
+
+
  @FXML
  private void handleSendEvent(MouseEvent event) {
   send();
-  for (User user : users) {
+  /*for (User user : users) {
    System.out.println(user.name);
   }
+*/
 
  }
 
  public void send() {
   String msg = msgField.getText();
-  writer.println(OpenPageController.username + ": " + msg);
+  writer.println(OpenPageController.userName  +" : " + msg);
   msgRoom.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
   msgRoom.appendText("Me: " + msg + "\n");
   msgField.setText("");
@@ -118,38 +162,39 @@ public class ChatRoomController extends Thread implements Initializable {
  }
 
  private void setProfile() {
-  for (User user : users) {
-   if (OpenPageController.username.equalsIgnoreCase(user.name)) {
-    fullName.setText(user.fullName);
+
+    info();
+
+    fullName.setText(Name1);
     fullName.setOpacity(1);
-    email.setText(user.email);
+    email.setText(email1);
     email.setOpacity(1);
-    phoneNo.setText(user.phoneNo);
-    gender.setText(user.gender);
-   }
-  }
+    phoneNo.setText(phone1);
+    gender.setText(gender1);
+
  }
 
 
  @Override
  public void initialize(URL url, ResourceBundle resourceBundle) {
+  info();
   showProPic.setStroke(Color.valueOf("#90a4ae"));
   Image image;
-  if (OpenPageController.gender.equalsIgnoreCase("Male")) {
+  if (gender1.equalsIgnoreCase("Male")) {
    image = new Image(new File("src/main/resources/com/example/icons/user.png").toURI().toString(), false);
   } else {
    image = new Image(new File("src/main/resources/com/example/icons/female.png").toURI().toString(), false);
    proImage.setImage(image);
   }
   showProPic.setFill(new ImagePattern(image));
-  clientName.setText(OpenPageController.username);
+  clientName.setText(String.valueOf(userName));
   connectSocket();
  }
 
 
  private void connectSocket() {
   try {
-   socket = new Socket("127.0.0.1", 2222);
+   socket = new Socket("127.0.0.1", 44444);
    System.out.println("Socket is connected with server!");
    reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
    writer = new PrintWriter(socket.getOutputStream(), true);
@@ -207,7 +252,7 @@ public class ChatRoomController extends Thread implements Initializable {
      fulmsg.append(tokens[i]);
     }
     System.out.println(fulmsg);
-    if (cmd.equalsIgnoreCase(OpenPageController.username + ":")) {
+    if (cmd.equalsIgnoreCase(OpenPageController.userName + ":")) {
      continue;
     } else if(fulmsg.toString().equalsIgnoreCase("bye")) {
      break;

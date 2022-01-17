@@ -16,10 +16,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+//import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class OpenPageController {
@@ -68,10 +72,10 @@ public class OpenPageController {
     @FXML
     public Label checkEmail;
 
-    public static String username, password, gender;
 
-    public  static ArrayList<User> users = new ArrayList<>();
-    public static ArrayList<User> loggedInUser = new ArrayList<>();
+
+
+
 
     //image back btn Handel...
     @FXML
@@ -84,6 +88,8 @@ public class OpenPageController {
         regPass.setText("");
         regEmail.setText("");
     }
+
+
 
     // SIgnIn and SignUP button handel....
     @FXML
@@ -105,7 +111,7 @@ public class OpenPageController {
 
 //registration part...
 
-    public  void registration()
+    public  void registration(ActionEvent evt)
     {
         if(!regName.getText().equalsIgnoreCase("")
             && !regPass.getText().equalsIgnoreCase("")
@@ -120,22 +126,45 @@ public class OpenPageController {
             {
                 if(checkEmail(regEmail.getText()))
                 {
-                    User newUser = new User();
-                    newUser.name = regName.getText();
-                    newUser.password = regPass.getText();
-                    newUser.email = regEmail.getText();
-                    newUser.fullName = regFirstName.getText();
-                    newUser.phoneNo = regPhoneNo.getText();
+                    String name, userName, password ,email, phn , gender;
+                    //User newUser = new User();
+                    name = regFirstName.getText();
+                    userName = regName.getText();
+                    password = String.valueOf(regPass.getText());
+                    email = regEmail.getText();
+                    phn = regPhoneNo.getText();
 
                     if(male.isSelected())
                     {
-                        newUser.gender= "Male";
+                        gender= "Male";
                     }
                     else
                     {
-                        newUser.gender= "Female";
+                        gender= "Female";
                     }
-                    users.add(newUser);
+                    //users.add(newUser);
+
+                    PreparedStatement pst;
+                    String query = "INSERT INTO `adda`( `a_name`, `a_userName`, `a_password`, `a_email`, `a_phn`,`a_gender`) VALUES (?,?,?,?,?,?)";
+                    try{
+                        pst = MyConnection.getConnection().prepareStatement(query);
+                        pst.setString(1, name);
+                        pst.setString(2, userName);
+                        pst.setString(3, password);
+                        pst.setString(4, email);
+                        pst.setString(5, phn);
+                        pst.setString(6,gender);
+                        pst.executeUpdate();
+
+
+                        if(pst.executeUpdate() > 0)
+                        {
+                            System.out.println("Add New User");
+                        }
+                    }
+                    catch (SQLException e) {
+                        Logger.getLogger(OpenPageController.class.getName()).log(Level.SEVERE, null, e);
+                    }
                     goBack.setOpacity(1);
                     success.setOpacity(1);
                     makeDefault();
@@ -196,32 +225,99 @@ public class OpenPageController {
     }
 
     //User-name check
-    private boolean checkUser(String username)
+    public boolean checkUser(String username)
     {
-        for (User user: users) {
-            if(user.name.equalsIgnoreCase(username))
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean checkUser = true;
+        String query = "SELECT * FROM `adda` WHERE `a_userName` =?";
+
+        try {
+            ps = MyConnection.getConnection().prepareStatement(query);
+            ps.setString(1, username);
+
+            rs = ps.executeQuery();
+
+            if(rs.next())
             {
-                return false;
+                checkUser = false;
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(OpenPageController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return true;
+        return checkUser;
     }
 
    //Check Email...
 
-    private boolean checkEmail(String email) {
-        for(User user : users) {
-            if(user.email.equalsIgnoreCase(email)) {
-                return false;
+    public boolean checkEmail(String email)
+    {
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean checkEmail = true;
+        String query = "SELECT * FROM `adda` WHERE `a_email` =?";
+
+        try {
+            ps = MyConnection.getConnection().prepareStatement(query);
+            ps.setString(1, email);
+
+            rs = ps.executeQuery();
+
+            if(rs.next())
+            {
+                checkEmail = false;
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(OpenPageController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return true;
+        return checkEmail;
     }
 
-    public void loginAction() {
-        username = userName.getText();
-        password = passWord.getText();
-        boolean login = false;
+
+
+    public TextField getUserName() {
+        return userName;
+    }
+
+    public void setUserName(TextField userName) {
+        this.userName = userName;
+    }
+
+    public void loginAction(ActionEvent ae) {
+        ResultSet rs;
+
+        PreparedStatement ps;
+
+        String uname = userName.getText();
+        String pass = passWord.getText();
+
+
+      /*  username = userName.getText();
+        password = passWord.getText();*/
+
+        String query = "SELECT * FROM `adda` WHERE `a_userName` =? AND `a_password` =?";
+
+        try {
+            ps = MyConnection.getConnection().prepareStatement(query);
+
+            ps.setString(1, uname);
+            ps.setString(2, pass);
+
+            rs = ps.executeQuery();
+
+            if(rs.next())
+            {
+                changeWindow();
+            }
+            else{
+                loginNotifier.setOpacity(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OpenPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+     /*   boolean login = false;
         for (User x : users) {
             if (x.name.equalsIgnoreCase(username) && x.password.equalsIgnoreCase(password)) {
                 login = true;
@@ -236,8 +332,11 @@ public class OpenPageController {
 
         } else {
             loginNotifier.setOpacity(1);
-        }
+        }*/
     }
+
+
+
 
     public void changeWindow() {
         try {
@@ -248,7 +347,7 @@ public class OpenPageController {
             Image image = new Image(new File("src/main/resources/com/example/icons/addaLogo.png").toURI().toString());
             stage.getIcons().add(image);
 
-            stage.setTitle(username + "");
+            stage.setTitle(userName + "");
             stage.setOnCloseRequest(event -> System.exit(0));
             stage.setResizable(false);
             stage.show();
@@ -256,4 +355,8 @@ public class OpenPageController {
             e.printStackTrace();
         }
     }
-}
+
+    }
+
+
+
