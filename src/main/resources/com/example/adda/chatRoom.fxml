@@ -78,9 +78,14 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="112.0" layoutY="397.0" mnemonicParsing="false" onAction="#saveImage" prefHeight="38.0" prefWidth="107.0" styleClass="allButton" stylesheets="@../Css/style.css" text="Save" textFill="WHITE">
+                  <Button layoutX="106.0" layoutY="381.0" mnemonicParsing="false" onAction="#saveImage" prefHeight="38.0" prefWidth="107.0" styleClass="allButton" stylesheets="@../Css/style.css" text="Save" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="7.0" layoutY="18.0" mnemonicParsing="false" onAction="#deleteAccount" prefHeight="35.0" prefWidth="107.0" styleClass="allButton" stylesheets="@../Css/style.css" text="Delete Account" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="13.0" />
                      </font>
                   </Button>
                </children>
@@ -89,12 +94,12 @@
                <children>
                   <AnchorPane layoutY="453.0" prefHeight="45.0" prefWidth="330.0" style="-fx-background-color: #FF4500;">
                      <children>
-                        <ImageView fitHeight="42.0" fitWidth="73.0" layoutX="286.0" layoutY="2.0" onMouseClicked="#handleSendEvent" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="35.0" fitWidth="34.0" layoutX="291.0" layoutY="3.0" onMouseClicked="#handleSendEvent" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/icons8-sent.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="msgField" layoutX="4.0" layoutY="4.0" onKeyPressed="#sendMessageByKey" prefHeight="34.0" prefWidth="274.0" promptText="Write messages here...." styleClass="msgBox">
+                        <TextField fx:id="msgField" layoutX="12.0" layoutY="1.0" onKeyPressed="#sendMessageByKey" prefHeight="35.0" prefWidth="266.0" promptText="Write messages here...." styleClass="msgBox">
                            <font>
                               <Font name="Arial" size="19.0" />
                            </font>
@@ -123,7 +128,7 @@
                </font>
             </Button>
             <Circle fx:id="showProPic" fill="#4cbb17" layoutX="35.0" layoutY="34.0" radius="30.0" stroke="WHITE" strokeType="INSIDE" />
-            <Button fx:id="logOutbtn1" layoutX="252.0" layoutY="20.0" mnemonicParsing="false" onAction="#logOutAction" style="-fx-background-color: #4cbb17;" styleClass="allButton" stylesheets="@../Css/style.css" text="LogOut" textFill="WHITE">
+            <Button fx:id="logOutbtn1" layoutX="252.0" layoutY="20.0" mnemonicParsing="false" onAction="#logOutAction" style="-fx-background-color: #4cbb17;" styleClass="allButton" stylesheets="@../Css/style.css" text="Logout" textFill="WHITE">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>

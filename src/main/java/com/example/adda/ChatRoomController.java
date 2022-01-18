@@ -21,6 +21,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
 import java.net.URL;
@@ -28,6 +29,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
+
 import static com.example.adda.OpenPageController.*;
 
 
@@ -78,6 +81,38 @@ public void takename()
 {
  for (User user : users) {
   userName = user.name;
+ }
+
+}
+
+@FXML
+private void deleteAccount(ActionEvent event)
+{
+ takename();
+ String a_userName = userName;
+ PreparedStatement pst;
+ String query = "DELETE FROM `adda` WHERE `a_userName` = ?";
+
+ try{
+
+  pst = MyConnection.getConnection().prepareStatement(query);
+  pst.setString(1,a_userName);
+  pst.executeUpdate();
+  fullName.setText("");
+  fullName.setOpacity(1);
+  email.setText("");
+  email.setOpacity(1);
+  phoneNo.setText("");
+  phoneNo.setOpacity(1);
+  gender.setText("");
+  gender.setOpacity(1);
+  TimeUnit.SECONDS.sleep(1);
+  JOptionPane.showMessageDialog(null, "Delete Account Successfully!");
+  System.exit(0);
+
+ }
+ catch (SQLException | InterruptedException e) {
+  e.printStackTrace();
  }
 
 }
