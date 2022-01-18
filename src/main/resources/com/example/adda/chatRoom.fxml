@@ -117,12 +117,17 @@
                   <Font name="Arial" size="19.0" />
                </font>
             </Label>
-            <Button fx:id="profileBtn" layoutX="257.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleProfileBtn" style="-fx-background-color: #4cbb17;" styleClass="allButton" stylesheets="@../Css/style.css" text="Profile" textFill="WHITE">
+            <Button fx:id="profileBtn" layoutX="180.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleProfileBtn" style="-fx-background-color: #4cbb17;" styleClass="allButton" stylesheets="@../Css/style.css" text="Profile" textFill="WHITE">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>
             </Button>
             <Circle fx:id="showProPic" fill="#4cbb17" layoutX="35.0" layoutY="34.0" radius="30.0" stroke="WHITE" strokeType="INSIDE" />
+            <Button fx:id="logOutbtn1" layoutX="252.0" layoutY="20.0" mnemonicParsing="false" onAction="#logOutAction" style="-fx-background-color: #4cbb17;" styleClass="allButton" stylesheets="@../Css/style.css" text="LogOut" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

@@ -32,6 +32,7 @@ public class OpenPageController {
 
     @FXML
     public Pane pnSignIn;
+
     @FXML
     public Button btnSignUp;
 
@@ -71,6 +72,132 @@ public class OpenPageController {
     public Label nameExists;
     @FXML
     public Label checkEmail;
+
+    //change password
+    @FXML
+    public Pane checkPass1;
+    @FXML
+    public Pane checkPass2;
+    @FXML
+    public Label checkLabel1;
+    @FXML
+    public Button checkNext1;
+    @FXML
+    public Button checkCancle1;
+    @FXML
+    public TextField checkEmail1;
+    @FXML
+    public TextField checkUser1;
+    @FXML
+    public Label checkLabel2;
+    @FXML
+    public Button checkHome;
+    @FXML
+    public Button checkSave;
+    @FXML
+    public TextField upPassword;
+
+
+
+    @FXML
+    private void cancle(ActionEvent event)
+    {
+        checkUser1.setText("");
+        checkEmail1.setText("");
+        checkLabel1.setOpacity(0);
+        new FadeTransition().play();
+        pnSignIn.toFront();
+
+    }
+
+    public  ArrayList<User> passUser = new ArrayList<>();
+    @FXML
+    private void next(ActionEvent event)
+    {
+        ResultSet rs;
+
+        PreparedStatement ps;
+
+        String chgName = checkUser1.getText();
+        String email = checkEmail1.getText();
+
+        User newUser1 = new User();
+        newUser1.name = chgName;
+        passUser.add(newUser1);
+
+        String query = "SELECT * FROM `adda` WHERE `a_userName` =? AND `a_email` =?";
+
+        try {
+            ps = MyConnection.getConnection().prepareStatement(query);
+
+            ps.setString(1, chgName);
+            ps.setString(2, email);
+
+            rs = ps.executeQuery();
+
+            if(rs.next())
+            {
+                checkLabel1.setOpacity(0);
+                new FadeTransition().play();
+                checkPass2.toFront();
+
+            }
+            else{
+                checkLabel1.setOpacity(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(OpenPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        checkUser1.setText("");
+        checkEmail1.setText("");
+
+    }
+    @FXML
+    private void home(ActionEvent event)
+    {
+        checkLabel2.setOpacity(0);
+        upPassword.setText("");
+        new FadeTransition().play();
+        pnSignIn.toFront();
+    }
+
+    @FXML
+    private void Save(ActionEvent event)
+    {
+        String a_password = upPassword.getText();
+        String a_userName ="";
+        for (User user : passUser) {
+            a_userName = user.name;
+        }
+        PreparedStatement pst;
+        String query = "UPDATE adda SET `a_password` = ? where `a_userName` = ?";
+        try{
+            pst = MyConnection.getConnection().prepareStatement(query);
+            pst.setString(1, a_password);
+            pst.setString(2,a_userName);
+            pst.executeUpdate();
+            checkLabel2.setOpacity(1);
+            upPassword.setText("");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
+
+    @FXML
+    private void changePass(MouseEvent event)
+    {
+        new FadeTransition().play();
+        checkPass1.toFront();
+    }
+
+
 
 
 

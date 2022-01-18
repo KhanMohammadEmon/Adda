@@ -63,6 +63,8 @@ public class ChatRoomController extends Thread implements Initializable{
  public Pane profile;
  @FXML
  public TextField fileChoosePath;
+ @FXML
+ public Button logOutbtn1;
 
  private FileChooser fileChooser;
  private File filePath;
@@ -89,6 +91,14 @@ public void takename()
  }
 
 
+ @FXML
+ private void logOutAction(ActionEvent event)
+ {
+  if(event.getSource()==logOutbtn1)
+  {
+   System.exit(0);
+  }
+ }
 
 int serial;
  String Name1,Password1,email1,phone1,gender1 = "";
