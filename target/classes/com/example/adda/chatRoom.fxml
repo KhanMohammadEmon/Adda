@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="560.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.adda.ChatRoomController">
+<AnchorPane fx:id="ChatAdda" prefHeight="560.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.adda.ChatRoomController">
    <children>
       <StackPane layoutY="67.0" prefHeight="494.0" prefWidth="330.0">
          <children>

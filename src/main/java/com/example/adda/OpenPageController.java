@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -304,9 +305,14 @@ public class OpenPageController {
 
     }
 
+    public  static ArrayList<User> users = new ArrayList<>();
+    //String uname = u
     public void changeWindow() {
         try {
             String uname =userName.getText();
+            User newUser = new User();
+            newUser.name = uname;
+            users.add(newUser);
             Stage stage = (Stage) userName.getScene().getWindow();
             Parent root;
             root = FXMLLoader.load(Objects.requireNonNull(this.getClass().getResource("chatRoom.fxml")));

@@ -71,35 +71,51 @@ public class ChatRoomController extends Thread implements Initializable{
  BufferedReader reader;
  PrintWriter writer = null;
  Socket socket;
- String userName = OpenPageController.class.getName();
+ String userName;
+public void takename()
+{
+ for (User user : users) {
+  userName = user.name;
+ }
+
+}
+
+ @FXML
+ private void handleSendEvent(MouseEvent event) {
+  send();
+  for (User user : users) {
+   System.out.println(user.name);
+  }
+ }
 
 
 
- String Name1,Password1,email1,phone1,gender1;
+int serial;
+ String Name1,Password1,email1,phone1,gender1 = "";
 
 
 
 
  public void info()
  {
+  takename();
+  PreparedStatement pst;
+  ResultSet rs;
+  String username = userName;
+  String query = "SELECT `Serial`, `a_name`,`a_password`, `a_email`, `a_phn`, `a_gender` FROM `adda` WHERE `a_userName`=?";
   try {
-   PreparedStatement pst;
-   ResultSet rs;
-   String username = userName;
-   String query = "SELECT `a_name`, `a_password`, `a_email`, `a_phn`, `a_gender` FROM `adda` WHERE a_userName =?";
    pst = MyConnection.getConnection().prepareStatement(query);
    pst.setString(1, username);
    rs = pst.executeQuery();
 
    if(rs.next()==true)
    {
-    this.Name1 = rs.getString(1);
-    this.Password1 = rs.getString(2);
-    this.email1 = rs.getString(3);
-    this. phone1 = rs.getString(3);
-    this. gender1 = rs.getString(3);
-
-
+    this.serial = rs.getInt(1);
+    this.Name1 = rs.getString(2);
+    this.Password1 = rs.getString(3);
+    this.email1 = rs.getString(4);
+    this. phone1 = rs.getString(5);
+    this. gender1 = rs.getString(6);
 
    }
    else
@@ -118,21 +134,15 @@ public class ChatRoomController extends Thread implements Initializable{
 
 
 
- @FXML
- private void handleSendEvent(MouseEvent event) {
-  send();
-  /*for (User user : users) {
-   System.out.println(user.name);
-  }
-*/
 
- }
 
  public void send() {
+  takename();
   String msg = msgField.getText();
+
   writer.println(userName  +" : " + msg);
   msgRoom.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-  msgRoom.appendText("Me: " + msg + "\n");
+  //msgRoom.appendText("Me: " + msg + "\n");
   msgField.setText("");
   if (msg.equalsIgnoreCase("BYE") || (msg.equalsIgnoreCase("logout"))) {
    System.exit(0);
@@ -176,7 +186,9 @@ public class ChatRoomController extends Thread implements Initializable{
     email.setText(email1);
     email.setOpacity(1);
     phoneNo.setText(phone1);
+    phoneNo.setOpacity(1);
     gender.setText(gender1);
+    gender.setOpacity(1);
 
  }
 
@@ -184,12 +196,13 @@ public class ChatRoomController extends Thread implements Initializable{
  @Override
  public void initialize(URL url, ResourceBundle resourceBundle) {
   info();
+  takename();
   System.out.println("Chat Room Controller user name : "+userName);
-  gender1 = "Male";
+ // gender1 = "Male";
   showProPic.setStroke(Color.valueOf("#90a4ae"));
   Image image;
   if (gender1.equalsIgnoreCase("Male")) {
-   image = new Image(new File("src/main/resources/com/example/icons/user.png").toURI().toString(), false);
+   image = new Image(new File("src/main/resources/com/example/icons/user.png").toURI().toString(), false);//false chilos
   } else {
    image = new Image(new File("src/main/resources/com/example/icons/female.png").toURI().toString(), false);
    proImage.setImage(image);
@@ -202,14 +215,11 @@ public class ChatRoomController extends Thread implements Initializable{
 
  private void connectSocket() {
   try {
-   socket = new Socket("127.0.0.1", 44444);
+   socket = new Socket("127.0.0.1", 2222);
    System.out.println("Socket is connected with server!");
    reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
    writer = new PrintWriter(socket.getOutputStream(), true);
    this.start();
-  /* ChatRoomController obj = new ChatRoomController(userNazme+"");
-   Thread thread = new Thread(obj);
-   thread.start();*/
   } catch (IOException e) {
    e.printStackTrace();
   }
@@ -233,18 +243,11 @@ public class ChatRoomController extends Thread implements Initializable{
  @FXML
  public void saveImage() {
   if (saveControl) {
-   //try {
-    /*BufferedImage bufferedImage = ImageIO.read(filePath);
-    Image image = SwingFXUtils.toFXImage(bufferedImage, null);*/
-
     Image image = new Image(new File(String.valueOf(filePath)).toURI().toString());
     proImage.setImage(image);
     showProPic.setFill(new ImagePattern(image));
     saveControl = false;
     fileChoosePath.setText("");
-   //} catch (IOException e) {
-    //System.err.println(e.getMessage());
-  // }
   }
 
  }

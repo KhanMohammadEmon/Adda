@@ -10,7 +10,7 @@ public class MyConnection {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/adda", "root", "");
-            System.out.println("Success");
+            //System.out.println("Success");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
