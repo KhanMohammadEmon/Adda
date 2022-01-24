@@ -17,6 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 //import javax.swing.*;
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
@@ -230,6 +231,8 @@ public class OpenPageController {
         loginNotifier.setOpacity(0);
         userName.setText("");
         passWord.setText("");
+        success.setOpacity(0);
+        goBack.setOpacity(0);
 
     }
 
@@ -252,7 +255,7 @@ public class OpenPageController {
                 if(checkEmail(regEmail.getText()))
                 {
                     String name, userName, password ,email, phn , gender;
-                    //User newUser = new User();
+
                     name = regFirstName.getText();
                     userName = regName.getText();
                     password = String.valueOf(regPass.getText());
@@ -267,7 +270,7 @@ public class OpenPageController {
                     {
                         gender= "Female";
                     }
-                    //users.add(newUser);
+
 
                     PreparedStatement pst;
                     String query = "INSERT INTO `adda`( `a_name`, `a_userName`, `a_password`, `a_email`, `a_phn`,`a_gender`) VALUES (?,?,?,?,?,?)";
@@ -284,7 +287,8 @@ public class OpenPageController {
 
                         if(pst.executeUpdate() > 0)
                         {
-                            System.out.println("Add New User");
+                            JOptionPane.showMessageDialog(null, "Add New User!");
+                            //System.out.println("Add New User");
                         }
                     }
                     catch (SQLException e) {

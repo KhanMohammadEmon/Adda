@@ -46,10 +46,10 @@ public class ChatRoomController extends Thread implements Initializable{
  public Label clientName;
  @FXML
  public Button profileBtn;
- @FXML
+/* @FXML
  public Label online;
  @FXML
- public Button chatBtn;
+ public Button chatBtn;*/
  @FXML
  public Circle showProPic;
  @FXML
@@ -88,15 +88,55 @@ public void takename()
 @FXML
 private void deleteAccount(ActionEvent event)
 {
+ ResultSet rs;
+
+ PreparedStatement ps;
+
  takename();
- String a_userName = userName;
+ String uname = userName;
+ System.out.println("Name : "+userName);
+
+
+
+ String pass = JOptionPane.showInputDialog("Enter Password: ");
+ System.out.println("Password : "+pass);
+ String query = "SELECT * FROM `adda` WHERE `a_userName` =? AND `a_password` =?";
+ try {
+  ps = MyConnection.getConnection().prepareStatement(query);
+
+  ps.setString(1, uname);
+  ps.setString(2, pass);
+
+  rs = ps.executeQuery();
+
+  if(rs.next())
+  {
+   delete();
+  }
+
+  else
+  {
+   JOptionPane.showMessageDialog(null, "Enter Correct Password!");
+  }
+
+ } catch (SQLException e) {
+  e.printStackTrace();
+ }
+}
+
+
+public void delete()
+{
  PreparedStatement pst;
+ takename();
+ String uname = userName;
+
  String query = "DELETE FROM `adda` WHERE `a_userName` = ?";
 
  try{
 
   pst = MyConnection.getConnection().prepareStatement(query);
-  pst.setString(1,a_userName);
+  pst.setString(1,uname);
   pst.executeUpdate();
   fullName.setText("");
   fullName.setOpacity(1);
@@ -114,7 +154,6 @@ private void deleteAccount(ActionEvent event)
  catch (SQLException | InterruptedException e) {
   e.printStackTrace();
  }
-
 }
 
  @FXML
@@ -143,9 +182,11 @@ int serial;
 
  public void info()
  {
-  takename();
   PreparedStatement pst;
   ResultSet rs;
+
+  takename();
+
   String username = userName;
   String query = "SELECT `Serial`, `a_name`,`a_password`, `a_email`, `a_phn`, `a_gender` FROM `adda` WHERE `a_userName`=?";
   try {
@@ -260,7 +301,7 @@ int serial;
 
  private void connectSocket() {
   try {
-   socket = new Socket("127.0.0.1", 2222);
+   socket = new Socket("127.0.0.1", 5555);
    System.out.println("Socket is connected with server!");
    reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
    writer = new PrintWriter(socket.getOutputStream(), true);

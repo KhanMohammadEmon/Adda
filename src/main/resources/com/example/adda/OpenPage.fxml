@@ -191,7 +191,7 @@
                         <Font name="Beirut Regular" size="18.0" />
                      </font>
                   </Button>
-                  <Label layoutX="72.0" layoutY="371.0" text="Don't Have an Account?" textFill="#d7d7d7">
+                  <Label layoutX="72.0" layoutY="382.0" text="Don't Have an Account?" textFill="#d7d7d7">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -216,12 +216,12 @@
                         <Image url="@../icons/addaLogo.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="loginNotifier" contentDisplay="CENTER" layoutX="26.0" layoutY="331.0" opacity="0.0" prefHeight="30.0" prefWidth="286.0" text="Username or password is incorrect" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="loginNotifier" contentDisplay="CENTER" layoutX="26.0" layoutY="320.0" opacity="0.0" prefHeight="30.0" prefWidth="286.0" text="Username or password is incorrect" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="95.0" layoutY="332.0" onMouseClicked="#changePass" text="Forgot PassWord?" textFill="#d7d7d7">
+                  <Label layoutX="95.0" layoutY="349.0" onMouseClicked="#changePass" text="Forgot PassWord?" textFill="#d7d7d7">
                      <font>
                         <Font size="19.0" />
                      </font>

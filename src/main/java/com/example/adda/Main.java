@@ -23,7 +23,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        MyConnection.getConnection();
+       // MyConnection.getConnection();
         launch(args);
 
     }
